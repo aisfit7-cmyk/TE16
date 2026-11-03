@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar — Fan Form</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>AVATAR</h1>
+    <p>WORLD OF PANDORA</p>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="form.html">Анкета</a>
+    </nav>
+</header>
+
+<section class="form-section">
+    <h2>Анкета фаната Аватара</h2>
+    <p>Расскажи немного о себе и своей любви к Пандоре</p>
+
+    <form id="fanForm">
+
+        <fieldset>
+            <legend>Личная информация</legend>
+
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Твоё имя" minlength="2" maxlength="30" required>
+
+            <label for="age">Возраст:</label>
+            <input type="number" id="age" name="age"
+                   min="1" max="100" required>
+
+            <label for="date">Дата рождения:</label>
+            <input type="date" id="date" name="date">
+        </fieldset>
+
+        <fieldset>
+            <legend>Контактная информация</legend>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"
+                   placeholder="example@mail.com" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="+7 777 000 00 00">
+
+            <label for="website">Любимый сайт:</label>
+            <input type="url" id="website" name="website"
+                   placeholder="https://example.com">
+        </fieldset>
+
+        <fieldset>
+            <legend>Мир Пандоры</legend>
+
+            <label for="movie">Любимый фильм:</label>
+            <select id="movie" name="movie" required>
+                <option value="">Выбери фильм</option>
+                <option>Avatar (2009)</option>
+                <option>The Way of Water (2022)</option>
+                <option>Fire and Ash (2025)</option>
+            </select>
+
+            <p>Любимый персонаж:</p>
+
+            <label><input type="radio" name="character" value="Jake" required> Джейк</label>
+            <label><input type="radio" name="character" value="Neytiri"> Нейтири</label>
+            <label><input type="radio" name="character" value="Kiri"> Кири</label>
+
+            <p>Что тебе нравится на Пандоре?</p>
+
+            <label><input type="checkbox" name="interest" value="Nature"> Природа</label>
+            <label><input type="checkbox" name="interest" value="Navi"> На'ви</label>
+            <label><input type="checkbox" name="interest" value="Ocean"> Океан</label>
+
+            <label for="comment">Твой комментарий:</label>
+            <textarea id="comment" name="comment"
+                      placeholder="Расскажи о любимой части фильма..."></textarea>
+
+            <label for="photo">Добавить изображение:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+        </fieldset>
+
+        <label class="agree">
+            <input type="checkbox" required>
+            Я согласен(на) с правилами сайта
+        </label>
+
+        <button type="submit">Отправить анкету</button>
+
+    </form>
+
+    <div id="success" class="success" hidden>
+        <h2>Добро пожаловать в Пандору!</h2>
+        <p id="result"></p>
+        <a href="index.html">На главную</a>
+    </div>
+</section>
+
+<footer>
+    <p>AVATAR | WORLD OF PANDORA | 2026</p>
+</footer>
+
+<script>
+const form = document.querySelector("#fanForm");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value;
+    const movie = document.querySelector("#movie").value;
+
+    document.querySelector("#result").textContent =
+        "Привет, " + name + "! Твой email: " + email +
+        ". Любимый фильм: " + movie;
+
+    form.hidden = true;
+    document.querySelector("#success").hidden = false;
+});
+</script>
+
+</body>
+</html>
